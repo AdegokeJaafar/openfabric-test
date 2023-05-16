@@ -13,7 +13,10 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.http.get(this.apiBaseUrl);
   }
-
+  getProductById(productId: string): Observable<any> {
+    const url = `${this.apiBaseUrl}/${productId}`;
+    return this.http.get(url);
+  }
   addProduct(product: any): Observable<any> {
     return this.http.post(this.apiBaseUrl, product);
   }

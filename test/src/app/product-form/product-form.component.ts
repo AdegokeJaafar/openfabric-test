@@ -22,6 +22,5 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // handle form submission
   }
 }

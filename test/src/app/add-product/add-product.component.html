@@ -1,11 +1,26 @@
-<form (ngSubmit)="onSubmit()" class="form-container">
-  <label for="name">Name:</label>
-  <input type="text" name="name" [(ngModel)]="product.name" required>
+<div>
+  <h2 class="add">Add Product</h2>
+  <form (ngSubmit)="addProduct()" class="form-container">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" [(ngModel)]="product.name" required />
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea
+        name="description"
+        [(ngModel)]="product.description"
+        required
+      ></textarea>
+    </div>
 
-  <label for="description">Description:</label>
-  <textarea name="description" [(ngModel)]="product.description" required></textarea>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" name="price" [(ngModel)]="product.price" required />
+    </div>
+    <button type="submit" mat-raised-button color="primary">
+      Add  Product
+    </button>
+  </form>
+</div>
 
-  <label for="price">Price:</label>
-  <input type="number" name="price" [(ngModel)]="product.price" required>
-  <button type="submit" mat-raised-button color="primary">Add Details</button>
-</form>

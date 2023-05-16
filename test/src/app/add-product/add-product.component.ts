@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Product } from '../product';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -8,16 +7,29 @@ import { ProductService } from '../product.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
-  product: Product = {
-    id: 0,
+  product: any = {
     name: '',
     description: '',
     price: 0,
+    imageUrl: ''
   };
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {}
 
-  onSubmit(): void {
-    this.productService.addProduct(this.product)
-       }
+  addProduct() {
+    this.productService.addProduct(this.product).subscribe(
+      (response) => {
+        console.log('Product added:', response);
+        this.product = {
+          name: '',
+          description: '',
+          price: 0,
+          imageUrl: ''
+        };
+      },
+      (error) => {
+        console.error('Error adding product:', error);
+      }
+    );
+  }
 }

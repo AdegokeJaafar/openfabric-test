@@ -21,4 +21,17 @@ export class ProductListComponent implements OnInit {
         this.products = data;
       });
   }
+
+  deleteProduct(productId: number) {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productService.deleteProduct(productId).subscribe(
+        () => {
+          this.products = this.products.filter((product) => product.id !== productId);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+  }
 }
