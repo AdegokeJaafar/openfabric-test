@@ -1,0 +1,26 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-container">
+  <div>
+    <label>Name:</label>
+    <input type="text" formControlName="name">
+    <div *ngIf="productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)">
+      <div *ngIf="productForm.get('name')?.errors?.['required']">Name is required.</div>
+    </div>
+  </div>
+  <div>
+    <label>Description:</label>
+    <input type="text" formControlName="description">
+    <div *ngIf="productForm.get('description')?.invalid && (productForm.get('description')?.dirty || productForm.get('description')?.touched)">
+      <div *ngIf="productForm.get('description')?.errors?.['required']">Description is required.</div>
+    </div>
+  </div>
+  <div>
+    <label>Price:</label>
+    <input type="number" formControlName="price">
+    <div *ngIf="productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)">
+      <div *ngIf="productForm.get('price')?.errors?.['required']">Price is required.</div>
+      <div *ngIf="productForm.get('price')?.errors?.['min']">Price must be at least 0.01.</div>
+    </div>
+  </div>
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+
+</form>
